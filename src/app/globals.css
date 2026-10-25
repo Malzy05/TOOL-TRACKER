@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+}
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+  background: #f1f5f9;
+  font-weight: 500;
+}
+
+/* Scrollbar */
+.scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+.scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+
+/* Animations */
+.fade-in { animation: fadeIn .35s ease both; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+.slide-in { animation: slideIn .3s ease both; }
+@keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+
+.toast { animation: toastIn .3s ease; }
+@keyframes toastIn { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+.modal-backdrop { animation: backdropIn .2s ease; }
+@keyframes backdropIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modal-panel { animation: panelIn .25s ease; }
+@keyframes panelIn { from { transform: scale(.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+.spinner {
+  width: 44px; height: 44px;
+  border: 3px solid #e2e8f0; border-top-color: #0ea5e9;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* UI Utilities */
+.nav-link { transition: all .2s ease; position: relative; }
+.nav-link.active {
+  background: linear-gradient(90deg, #0ea5e9, #0284c7); color: white;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, .35);
+}
+.nav-link.active .icon { color: white; }
+.nav-link:not(.active):hover { background: #f1f5f9; }
+
+.card-hover { transition: all .25s ease; }
+.card-hover:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0, 0, 0, .08); }
+
+.sticky thead th { position: sticky; top: 0; background: #f8fafc; z-index: 5; }
+
+.gradient-bg { background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 50%, #8b5cf6 100%); }
+.glass { backdrop-filter: blur(12px); background: rgba(255, 255, 255, .75); }
+
+.btn-primary { background: linear-gradient(90deg, #0ea5e9, #0284c7); transition: all .2s; }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 16px rgba(14, 165, 233, .3); }
+
+input:focus, select:focus, textarea:focus {
+  outline: none; border-color: #0ea5e9; box-shadow: 0 0 0 3px rgba(14, 165, 233, .15);
+}
+
+.sub-menu a.active { background: #e0f2fe; color: #0369a1; font-weight: 600; }
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] .chev { transform: rotate(90deg); }
+.chev { transition: transform .2s; }
+
+.badge { padding: 2px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; text-align: center; line-height: normal; }
+
+/* Dark Mode Magic Fixes */
+html.dark body { background-color: #0f172a !important; }
+html.dark .bg-white { background-color: #1e293b !important; }
+html.dark .text-slate-800 { color: #f8fafc !important; }
+html.dark .text-slate-700 { color: #e2e8f0 !important; }
+html.dark .text-slate-600, html.dark .text-slate-500 { color: #cbd5e1 !important; }
+html.dark .text-slate-400 { color: #f1f5f9 !important; }
+html.dark .border-slate-100, html.dark .border-slate-200 { border-color: #334155 !important; }
+html.dark .bg-slate-50 { background-color: #0f172a !important; }
+html.dark .bg-slate-100 { background-color: #334155 !important; }
+html.dark input, html.dark select { background-color: #0f172a !important; color: #f8fafc !important; border-color: #334155 !important; }
+html.dark .hover\:bg-slate-50:hover { background-color: #334155 !important; }
+html.dark .hover\:bg-slate-100:hover { background-color: #475569 !important; }
+html.dark .hover\:bg-slate-200:hover { background-color: #64748b !important; }
+html.dark .sticky.thead th, html.dark .sticky thead th { background-color: #0f172a !important; border-bottom-color: #334155 !important; }
+html.dark .modal-panel { background-color: #1e293b !important; }
+html.dark .glass { background-color: rgba(30, 41, 59, 0.85) !important; }
